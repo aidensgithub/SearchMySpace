@@ -29,7 +29,7 @@ class Messenger:
         success_counter = 0
         for s in spaces:
             try:
-                s = s if s is str else "https://www.twitter.com/i/spaces/"+s.id
+                s = s if isinstance(s, str) else "https://www.twitter.com/i/spaces/"+s.id
                 reply = self.client_m.send_message(s, sender_id)
                 if reply is not None and (reply.id is not None or reply.created_timestamp is not None):
                     success_counter += 1
