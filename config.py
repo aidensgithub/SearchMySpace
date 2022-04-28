@@ -1,4 +1,4 @@
-import logging as logger
+import logging
 from dotenv import load_dotenv
 import tweepy
 import os
@@ -30,7 +30,7 @@ class Configurator:
         try:
             api.verify_credentials()
         except Exception as e:
-            logger.error("Error creating api", exc_info=True)
+            logging.error("Error creating api", exc_info=True)
             raise e
-        logger.info("api and Client created")
+        logging.info("api and Client created")
         return api, client
