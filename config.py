@@ -6,7 +6,12 @@ import os
 
 class Configurator:
     load_dotenv()
-    logger.basicConfig(level=logger.DEBUG)
+    log_format = '%(asctime)s - %(levelname)s - %(message)s'
+    logging.basicConfig(format=log_format, level=logging.INFO,
+                        filename = "logs/logfile.log", filemode = "w")
+    handler = handlers.TimedRotatingFileHandler("logs/logfile.log", when='midnight')
+    handler.setFormatter(logging.Formatter(log_format, datefmt="%d-%m-%Y %H:%M:%S"))
+    logging.info(f'Starting up..')
 
     @staticmethod
     def create_clients():
